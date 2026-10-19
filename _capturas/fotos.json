@@ -1,0 +1,12 @@
+{
+  "prueba-fotos": {
+    "bajadas": [
+      "pexels-3965545.jpg (238 KB)",
+      "pexels-7679453.jpg (273 KB)"
+    ],
+    "ya_estaban": [],
+    "fallidas": [
+      "unsplash-ZD6cS5qLSQw.jpg: https://unsplash.com/photos/ZD6cS5qLSQw/download?force=true&w=1600 → HTTP 401 text/html; charset=utf-8"
+    ]
+  }
+}
