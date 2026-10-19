@@ -3,7 +3,7 @@ name: Capturas y videos de las demos
 on:
   push:
     branches: [main]
-    paths-ignore: ["_capturas/**", "videos/**"]
+    paths-ignore: ["_capturas/**", "videos/**", "*/fotos/**"]
   workflow_dispatch:
 
 permissions:
@@ -18,8 +18,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
         with:
           node-version: 22
       - name: Instalar Playwright y ffmpeg
@@ -27,17 +27,21 @@ jobs:
           npm i --no-save playwright@1.48.2
           npx playwright install --with-deps chromium
           sudo apt-get install -y ffmpeg
+      - name: Bajar fotos libres de cada demo
+        run: node _herramientas/bajar-fotos.mjs
       - name: Servir el sitio
         run: (python3 -m http.server 8080 >/dev/null 2>&1 &) && sleep 2
       - name: Capturar cada demo
         run: |
-          DEMOS=$(for d in */; do d=${d%/}; [ -f "$d/index.html" ] && [ "${d:0:1}" != "_" ] && echo "$d"; done)
+          DEMOS=$(for d in */; do d=${d%/}; if [ -f "$d/index.html" ] && [ "${d:0:1}" != "_" ]; then echo "$d"; fi; done)
           echo "Demos: $DEMOS"
           node _herramientas/capturar.mjs $DEMOS
       - name: Guardar capturas y videos en el repo
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          shopt -s nullglob
           git add _capturas videos
+          for d in */fotos; do git add "$d"; done
           git diff --cached --quiet || git commit -m "Capturas y videos de las demos"
           git push

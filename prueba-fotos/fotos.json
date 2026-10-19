@@ -1,0 +1,20 @@
+[
+  {
+    "archivo": "pexels-3965545.jpg",
+    "url": "https://images.pexels.com/photos/3965545/pexels-photo-3965545.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "fuente": "https://www.pexels.com/photo/clothes-hanged-on-clothes-rack-3965545/",
+    "credito": "Pexels"
+  },
+  {
+    "archivo": "pexels-7679453.jpg",
+    "url": "https://images.pexels.com/photos/7679453/pexels-photo-7679453.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "fuente": "https://www.pexels.com/photo/a-woman-looking-at-clothes-hanging-in-the-rack-7679453/",
+    "credito": "Pexels"
+  },
+  {
+    "archivo": "unsplash-ZD6cS5qLSQw.jpg",
+    "url": "https://unsplash.com/photos/ZD6cS5qLSQw/download?force=true&w=1600",
+    "fuente": "https://unsplash.com/photos/a-modern-bedroom-with-a-large-bed-and-neutral-decor-ZD6cS5qLSQw",
+    "credito": "Unsplash"
+  }
+]
