@@ -1,12 +1,21 @@
 {
   "prueba-fotos": {
     "bajadas": [
-      "pexels-3965545.jpg (238 KB)",
-      "pexels-7679453.jpg (273 KB)"
+      "robe-cama-3765109.jpg (47 KB)",
+      "corpino-negro-encaje-8966046.jpg (110 KB)",
+      "flatlay-ropa-5405644.jpg (188 KB)",
+      "malla-espalda-playa-12824838.jpg (63 KB)",
+      "malla-sombrero-playa-16172522.jpg (111 KB)",
+      "malla-verde-8565853.jpg (73 KB)",
+      "malla-multicolor-3722173.jpg (103 KB)",
+      "local-percheros-4940756.jpg (161 KB)",
+      "malla-negra-playa-7406209.jpg (99 KB)",
+      "malla-entera-arena-9748631.jpg (55 KB)",
+      "malla-negra-closeup-8723411.jpg (121 KB)",
+      "local-percha-plantas-3965545.jpg (80 KB)",
+      "mujer-mirando-ropa-7679453.jpg (88 KB)"
     ],
     "ya_estaban": [],
-    "fallidas": [
-      "unsplash-ZD6cS5qLSQw.jpg: https://unsplash.com/photos/ZD6cS5qLSQw/download?force=true&w=1600 → HTTP 401 text/html; charset=utf-8"
-    ]
+    "fallidas": []
   }
 }
