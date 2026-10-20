@@ -1,4 +1,39 @@
 {
+  "deco": {
+    "bajadas": [
+      "portada.jpg (98 KB)",
+      "hero-mesa.jpg (324 KB)",
+      "hero-flores.jpg (660 KB)",
+      "hero-living.jpg (634 KB)",
+      "cat-mesa.jpg (217 KB)",
+      "cat-textiles.jpg (388 KB)",
+      "cat-objetos.jpg (391 KB)",
+      "regalo.jpg (368 KB)",
+      "p-cala.jpg (632 KB)",
+      "p-siesta.jpg (279 KB)",
+      "p-malbec.jpg (525 KB)",
+      "p-aro.jpg (131 KB)",
+      "p-jarritas.jpg (70 KB)",
+      "p-perla.jpg (116 KB)",
+      "p-pack.jpg (545 KB)"
+    ],
+    "ya_estaban": [],
+    "fallidas": []
+  },
+  "lenceria": {
+    "bajadas": [
+      "portada.jpg (132 KB)",
+      "col-trajes.jpg (314 KB)",
+      "pijama.jpg (366 KB)",
+      "p-nacar.jpg (704 KB)",
+      "p-marea.jpg (304 KB)",
+      "p-lima.jpg (335 KB)",
+      "elegir.jpg (273 KB)",
+      "local.jpg (238 KB)"
+    ],
+    "ya_estaban": [],
+    "fallidas": []
+  },
   "moda": {
     "bajadas": [],
     "ya_estaban": [
