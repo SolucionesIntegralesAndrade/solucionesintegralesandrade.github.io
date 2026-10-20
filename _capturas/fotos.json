@@ -1,37 +1,69 @@
 {
-  "deco": {
+  "belleza": {
     "bajadas": [
-      "portada.jpg (98 KB)",
-      "hero-mesa.jpg (324 KB)",
-      "hero-flores.jpg (660 KB)",
-      "hero-living.jpg (634 KB)",
-      "cat-mesa.jpg (217 KB)",
-      "cat-textiles.jpg (388 KB)",
-      "cat-objetos.jpg (391 KB)",
-      "regalo.jpg (368 KB)",
-      "p-cala.jpg (632 KB)",
-      "p-siesta.jpg (279 KB)",
-      "p-malbec.jpg (525 KB)",
-      "p-aro.jpg (131 KB)",
-      "p-jarritas.jpg (70 KB)",
-      "p-perla.jpg (116 KB)",
-      "p-pack.jpg (545 KB)"
+      "portada.jpg (112 KB)",
+      "crema-manos.jpg (58 KB)",
+      "perfume-aceites.jpg (468 KB)",
+      "perfume-rojo.jpg (151 KB)",
+      "limpieza-espuma.jpg (99 KB)",
+      "crema-espejo.jpg (111 KB)",
+      "serum-gotero.jpg (141 KB)",
+      "crema-mano.jpg (118 KB)",
+      "pote-rosa.jpg (61 KB)",
+      "manteca-lata.jpg (146 KB)"
+    ],
+    "ya_estaban": [],
+    "fallidas": []
+  },
+  "deco": {
+    "bajadas": [],
+    "ya_estaban": [
+      "portada.jpg",
+      "hero-mesa.jpg",
+      "hero-flores.jpg",
+      "hero-living.jpg",
+      "cat-mesa.jpg",
+      "cat-textiles.jpg",
+      "cat-objetos.jpg",
+      "regalo.jpg",
+      "p-cala.jpg",
+      "p-siesta.jpg",
+      "p-malbec.jpg",
+      "p-aro.jpg",
+      "p-jarritas.jpg",
+      "p-perla.jpg",
+      "p-pack.jpg"
+    ],
+    "fallidas": []
+  },
+  "joyeria": {
+    "bajadas": [
+      "aros-escama.jpg (202 KB)",
+      "aros-luna.jpg (575 KB)",
+      "aros-argolla-perfil.jpg (518 KB)",
+      "aros-trio.jpg (403 KB)",
+      "anillo-delfin.jpg (35 KB)",
+      "anillos-ola.jpg (258 KB)",
+      "anillos-manos.jpg (201 KB)",
+      "alianzas-madera.jpg (348 KB)",
+      "pulsera-bolitas.jpg (332 KB)",
+      "collar-cadena.jpg (96 KB)"
     ],
     "ya_estaban": [],
     "fallidas": []
   },
   "lenceria": {
-    "bajadas": [
-      "portada.jpg (132 KB)",
-      "col-trajes.jpg (314 KB)",
-      "pijama.jpg (366 KB)",
-      "p-nacar.jpg (704 KB)",
-      "p-marea.jpg (304 KB)",
-      "p-lima.jpg (335 KB)",
-      "elegir.jpg (273 KB)",
-      "local.jpg (238 KB)"
+    "bajadas": [],
+    "ya_estaban": [
+      "portada.jpg",
+      "col-trajes.jpg",
+      "pijama.jpg",
+      "p-nacar.jpg",
+      "p-marea.jpg",
+      "p-lima.jpg",
+      "elegir.jpg",
+      "local.jpg"
     ],
-    "ya_estaban": [],
     "fallidas": []
   },
   "moda": {
