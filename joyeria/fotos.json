@@ -1,0 +1,62 @@
+[
+  {
+    "archivo": "aros-escama.jpg",
+    "url": "https://images.pexels.com/photos/15743937/pexels-photo-15743937.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "fuente": "https://www.pexels.com/photo/15743937/",
+    "credito": "Pexels"
+  },
+  {
+    "archivo": "aros-luna.jpg",
+    "url": "https://images.pexels.com/photos/12194346/pexels-photo-12194346.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "fuente": "https://www.pexels.com/photo/12194346/",
+    "credito": "Pexels"
+  },
+  {
+    "archivo": "aros-argolla-perfil.jpg",
+    "url": "https://images.pexels.com/photos/11456370/pexels-photo-11456370.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "fuente": "https://www.pexels.com/photo/11456370/",
+    "credito": "Pexels"
+  },
+  {
+    "archivo": "aros-trio.jpg",
+    "url": "https://images.pexels.com/photos/18597841/pexels-photo-18597841.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "fuente": "https://www.pexels.com/photo/18597841/",
+    "credito": "Pexels"
+  },
+  {
+    "archivo": "anillo-delfin.jpg",
+    "url": "https://images.pexels.com/photos/1653227/pexels-photo-1653227.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "fuente": "https://www.pexels.com/photo/1653227/",
+    "credito": "Pexels"
+  },
+  {
+    "archivo": "anillos-ola.jpg",
+    "url": "https://images.pexels.com/photos/9431876/pexels-photo-9431876.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "fuente": "https://www.pexels.com/photo/9431876/",
+    "credito": "Pexels"
+  },
+  {
+    "archivo": "anillos-manos.jpg",
+    "url": "https://images.pexels.com/photos/9431873/pexels-photo-9431873.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "fuente": "https://www.pexels.com/photo/9431873/",
+    "credito": "Pexels"
+  },
+  {
+    "archivo": "alianzas-madera.jpg",
+    "url": "https://images.pexels.com/photos/265916/pexels-photo-265916.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "fuente": "https://www.pexels.com/photo/265916/",
+    "credito": "Pexels"
+  },
+  {
+    "archivo": "pulsera-bolitas.jpg",
+    "url": "https://images.pexels.com/photos/16684965/pexels-photo-16684965.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "fuente": "https://www.pexels.com/photo/16684965/",
+    "credito": "Pexels"
+  },
+  {
+    "archivo": "collar-cadena.jpg",
+    "url": "https://images.pexels.com/photos/16124724/pexels-photo-16124724.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    "fuente": "https://www.pexels.com/photo/16124724/",
+    "credito": "Pexels"
+  }
+]
