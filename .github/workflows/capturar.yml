@@ -27,6 +27,9 @@ jobs:
           npm i --no-save playwright@1.48.2
           npx playwright install --with-deps chromium
           sudo apt-get install -y ffmpeg
+      - name: Sacar las carpetas de prueba (fotos candidatas, no se publican)
+        run: |
+          for d in prueba-*/; do [ -d "$d" ] && git rm -rq --ignore-unmatch "$d" && rm -rf "$d"; done; true
       - name: Bajar fotos libres de cada demo
         run: node _herramientas/bajar-fotos.mjs
       - name: Servir el sitio
@@ -41,7 +44,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           shopt -s nullglob
-          git add _capturas videos
+          git add -A _capturas videos
           for d in */fotos; do git add "$d"; done
           git diff --cached --quiet || git commit -m "Capturas y videos de las demos"
           git push
