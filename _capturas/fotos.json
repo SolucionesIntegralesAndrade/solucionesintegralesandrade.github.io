@@ -1,1 +1,16 @@
-{}
+{
+  "moda": {
+    "bajadas": [
+      "portada.jpg (354 KB)",
+      "vestido-tipa.jpg (160 KB)",
+      "vestido-azahar.jpg (399 KB)",
+      "vestido-coronillo.jpg (243 KB)",
+      "tela-lino.jpg (467 KB)",
+      "taller-perchero.jpg (238 KB)",
+      "clienta-perchero.jpg (273 KB)",
+      "local-interior.jpg (161 KB)"
+    ],
+    "ya_estaban": [],
+    "fallidas": []
+  }
+}

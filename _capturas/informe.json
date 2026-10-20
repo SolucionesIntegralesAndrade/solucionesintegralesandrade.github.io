@@ -1,1 +1,13 @@
-{}
+{
+  "moda": {
+    "url": "http://localhost:8080/moda/",
+    "errores": [],
+    "fotos_rotas": [],
+    "videos_rotos": [],
+    "pedidos_fallidos": [],
+    "alto_compu": 9940,
+    "scroll_horizontal_compu": false,
+    "alto_celu": 8601,
+    "scroll_horizontal_celu": false
+  }
+}
