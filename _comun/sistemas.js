@@ -588,9 +588,10 @@ function create(host, cfg) {
     return h('span.sx-sw' + (size ? ' ' + size : ''), { style: '--m:' + mix + '%;--ang:' + (hs * 37 + 20) + 'deg', 'aria-hidden': 'true' }, h('b', p.name.charAt(0)));
   }
   function goto(mod, sub) {
+    if (S.openFs) S.openFs();
     selectTab(mod);
     if (sub && mods[mod].setView) mods[mod].setView(sub);
-    var app = root.querySelector('.sx-app'); if (app && app.scrollIntoView) { var r = app.getBoundingClientRect(); if (r.top < 0 || r.top > 140) app.scrollIntoView({ behavior: REDUCED ? 'auto' : 'smooth', block: 'start' }); }
+    var app = S.openFs ? null : root.querySelector('.sx-app'); if (app && app.scrollIntoView) { var r = app.getBoundingClientRect(); if (r.top < 0 || r.top > 140) app.scrollIntoView({ behavior: REDUCED ? 'auto' : 'smooth', block: 'start' }); }
     var bd = root.querySelector('.sx-body'); if (bd) bd.scrollTop = 0;
   }
   function scrollInBody(el) {
@@ -1688,14 +1689,20 @@ function create(host, cfg) {
   ];
   function assemble() {
     var CSS_URL = '/_comun/sistemas.css'; try { if (SCRIPT && SCRIPT.src) CSS_URL = SCRIPT.src.replace(/[^\/?#]*([?#].*)?$/, '') + 'sistemas.css'; } catch (e) {}
-    var cssLink = h('link', { rel: 'stylesheet', href: CSS_URL });
-    sh.appendChild(cssLink); sh.appendChild(root);
-    var shown = function () { root.style.visibility = ''; };
-    if (!FAST) { root.style.visibility = 'hidden'; cssLink.addEventListener('load', shown); cssLink.addEventListener('error', shown); setTimeout(shown, 2500); }
+    var MOB = window.__SX_MOBILE != null ? !!window.__SX_MOBILE : !!(window.matchMedia && window.matchMedia('(max-width:700px)').matches);
+    var page = MOB ? h('div.sx.sx-page') : root;
+    if (MOB) root.classList.add('sx-m');
+    function mountCss(into, el) {
+      var l = h('link', { rel: 'stylesheet', href: CSS_URL });
+      into.appendChild(l); into.appendChild(el);
+      var shown = function () { el.style.visibility = ''; };
+      if (!FAST) { el.style.visibility = 'hidden'; l.addEventListener('load', shown); l.addEventListener('error', shown); setTimeout(shown, 2500); }
+    }
+    mountCss(sh, page);
     host.setAttribute('data-sx-ready', '1');
     if (!host.hasAttribute('aria-label') && !host.hasAttribute('aria-labelledby')) host.setAttribute('aria-label', 'Sumale a tu tienda: demo de caja, clientas y gestión');
     var ac = ''; try { ac = (host.style.getPropertyValue('--sx-accent') || getComputedStyle(host).getPropertyValue('--sx-accent') || '').trim(); } catch (e) {}
-    root.style.setProperty('--sx-on', onColor(ac || '#a8613f'));
+    root.style.setProperty('--sx-on', onColor(ac || '#a8613f')); page.style.setProperty('--sx-on', onColor(ac || '#a8613f'));
     var wrap = h('div.sx-wrap');
     var chips = h('ul.sx-probs'); R.problems.forEach(function (t, i) { chips.appendChild(h('li', h('span.sx-pn', pad(i + 1, 2)), h('p', t))); });
     wrap.appendChild(h('header.sx-head',
@@ -1703,10 +1710,11 @@ function create(host, cfg) {
       h('h2', { id: 'sx-h-' + rk }, 'Tu tienda, tu caja, tus clientas y tu gestión en un solo lugar'),
       h('p.sx-lead', 'Probalo vos: es una tienda de ejemplo (' + marca + ') y cada botón funciona de verdad.'),
       chips));
-    var tabs = [['caja', 'Caja', 'POS', 'cart'], ['crm', 'Clientas', 'CRM', 'user'], ['erp', 'Gestión', 'ERP', 'chart'], ['flujo', 'Todo conectado', '', 'link']];
+    var tabs = [['caja', 'Caja', 'POS', 'cart'], ['crm', 'Clientas', 'CRM', 'user'], ['erp', 'Gestión', 'ERP', 'chart'], ['flujo', MOB ? 'Conectado' : 'Todo conectado', '', 'link']];
     var TITLES = { caja: 'Caja · POS', crm: 'Clientas · CRM', erp: 'Gestión · ERP', flujo: 'Todo conectado' };
     var bar = tabsBar(tabs.map(function (t) { return { k: t[0], label: t[1], sub: t[2], icon: t[3], controls: 'sx-p-' + t[0] + '-' + rk }; }), S.tab, function (k) { selectTab(k); }, { label: 'Módulos del sistema', id: 'sx-mt-' + rk, cls: 'main', panel: null });
-    var reset = btn('Reiniciar', function () { if (host.__sxOff) host.__sxOff(); create(host, cfg); }, 'sx-ghost sm sx-reset', 'undo', { title: 'Vuelve la demo al estado inicial' });
+    var reset = btn('Reiniciar', function () { var was = fsOpen; if (host.__sxOff) host.__sxOff(); create(host, cfg); if (was && host.__sxFs) host.__sxFs.open(); }, 'sx-ghost sm sx-reset', 'undo', { title: 'Vuelve la demo al estado inicial', 'aria-label': 'Reiniciar datos de ejemplo' });
+    var closeBtn = MOB ? h('button.sx-btn.sx-ghost.sx-icn.sx-close', { type: 'button', 'aria-label': 'Cerrar y volver a la página', on: { click: function () { closeFs(); } } }, ico('x')) : null;
     var body = h('div.sx-body');
     var panels = {};
     tabs.forEach(function (t) { panels[t[0]] = h('div.sx-panel', { id: 'sx-p-' + t[0] + '-' + rk, role: 'tabpanel', 'aria-labelledby': 'sx-mt-' + rk + '-' + t[0], hidden: t[0] === S.tab ? null : true }); body.appendChild(panels[t[0]]); });
@@ -1732,10 +1740,10 @@ function create(host, cfg) {
       sub.appendChild(h('small', 'Pantallas'));
       it.forEach(function (x) { sub.appendChild(h('button.sx-sbtn', { type: 'button', 'aria-current': x.on ? 'page' : null, 'aria-disabled': x.locked ? 'true' : null, on: { click: function () { x.run(); drawSide(true); } } }, ico(x.locked ? 'lock' : x.icon), h('span', x.label))); });
     }
-    wrap.appendChild(h('div.sx-win', h('div.sx-app',
+    var winEl = h('div.sx-win', h('div.sx-app', MOB ? { role: 'dialog', 'aria-modal': 'true', 'aria-label': 'Sistema de ejemplo: caja, clientas y gestión' } : null,
       h('aside.sx-side', h('div.sx-brand', h('i'), h('span', marca)), bar, sub),
-      h('div.sx-apptop', h('span.sx-dots', { 'aria-hidden': 'true' }, h('i'), h('i'), h('i')), title, h('span.sx-demo', 'Datos de ejemplo'), reset),
-      body, live)));
+      h('div.sx-apptop', h('span.sx-dots', { 'aria-hidden': 'true' }, h('i'), h('i'), h('i')), title, h('span.sx-demo', 'Datos de ejemplo'), reset, closeBtn),
+      body, live));
     selectTab = function (k) {
       if (!mods[k]) return;
       S.tab = k; bar.sel(k);
@@ -1746,19 +1754,52 @@ function create(host, cfg) {
     };
     S.onView = function () { drawSide(); };
     /* qué resolvemos */
-    var grid = h('div.sx-solves');
+    var grid = h('div.sx-solves'), solvesEl;
     SOLVE.forEach(function (s) {
       grid.appendChild(h('article.sx-solve', h('i', ico(s[5])), h('div', h('h4', s[0]), h('p', s[1]), btn('Probar: ' + s[2], function () { goto(s[3], s[4]); }, 'sx-chip', 'arrow'))));
     });
-    wrap.appendChild(h('section.sx-solves-w', { 'aria-labelledby': 'sx-solve-h-' + rk }, h('div.sx-solves-h', h('h3', { id: 'sx-solve-h-' + rk }, 'Qué problemas resolvemos')), grid,
+    wrap.appendChild(solvesEl = h('section.sx-solves-w', { 'aria-labelledby': 'sx-solve-h-' + rk }, h('div.sx-solves-h', h('h3', { id: 'sx-solve-h-' + rk }, 'Qué problemas resolvemos')), grid,
       h('div.sx-cta', h('div', h('h3', '¿Cuál de estos te quita el sueño?'), h('p', 'Contanos qué te complica y te mostramos cómo se resuelve.')), h('a.sx-btn.sx-solid.big', { href: '#contacto' }, h('span', 'Contanos qué te complica'), ico('arrow')))));
-    root.appendChild(wrap);
+    /* ---- pantalla completa en celular ---- */
+    var fsOpen = false, fsHost = null, fsPrev = null, pushed = false, lockSaved = null, entryBtn = null;
+    function onPop() { if (fsOpen) { pushed = false; closeFs(true); } }
+    function onEsc(e) { if (fsOpen && e.key === 'Escape' && !modalOpen()) { e.preventDefault(); closeFs(); } }
+    function openFs() {
+      if (fsOpen) return; fsOpen = true; fsPrev = entryBtn || sh.activeElement;
+      fsHost = doc.createElement('div'); fsHost.setAttribute('data-sx-fs', ''); fsHost.setAttribute('style', (host.getAttribute('style') || '') + ';position:fixed;inset:0;z-index:2147483600;display:block;height:100%;');
+      var fsh = fsHost.attachShadow({ mode: 'open' }); mountCss(fsh, root);
+      doc.body.appendChild(fsHost);
+      lockSaved = [doc.documentElement.style.overflow, doc.body.style.overflow]; doc.documentElement.style.overflow = 'hidden'; doc.body.style.overflow = 'hidden';
+      try { history.pushState({ sx: 1 }, ''); pushed = true; } catch (e) {}
+      window.addEventListener('popstate', onPop); doc.addEventListener('keydown', onEsc);
+      var t = root.querySelector('.sx-tab[aria-selected=true]'); if (t) t.focus();
+    }
+    function closeFs(fromPop) {
+      if (!fsOpen) return; fsOpen = false;
+      window.removeEventListener('popstate', onPop); doc.removeEventListener('keydown', onEsc);
+      if (fsHost && fsHost.parentNode) fsHost.parentNode.removeChild(fsHost); fsHost = null;
+      if (lockSaved) { doc.documentElement.style.overflow = lockSaved[0]; doc.body.style.overflow = lockSaved[1]; lockSaved = null; }
+      if (pushed && !fromPop) { pushed = false; try { history.back(); } catch (e) {} }
+      var p = fsPrev; fsPrev = null; if (p && p.focus) { try { p.focus(); } catch (e) {} }
+    }
+    host.__sxFs = { open: openFs, close: closeFs, isOpen: function () { return fsOpen; } };
+    if (MOB) S.openFs = openFs;
+    var mq = window.matchMedia && window.__SX_MOBILE == null ? window.matchMedia('(max-width:700px)') : null;
+    if (mq && mq.addEventListener) { var onMq = function () { if (mq.matches !== MOB) { host.__sxOff(); create(host, cfg); } }; mq.addEventListener('change', onMq); host.__sxMq = function () { mq.removeEventListener('change', onMq); }; }
+    if (!MOB) { wrap.insertBefore(winEl, solvesEl); root.appendChild(wrap); }
+    else {
+      root.appendChild(winEl);
+      entryBtn = btn('Explorar el sistema', function () { openFs(); }, 'sx-solid big sx-explore', 'arrow');
+      var entry = h('div.sx-entry', h('div.sx-ent-ico', ico('phone')), h('h3', 'Probalo en tu celular'), h('p', 'Caja, clientas y gestión de ' + marca + ' en pantalla completa. Tocá, cobrá, mové consultas: todo funciona.'), entryBtn,
+        h('ul.sx-ent-mods', ['Caja', 'Clientas', 'Gestión', 'Todo conectado'].map(function (x) { return h('li', x); })), h('small', 'Datos de ejemplo · se cierra con la X o el botón atrás'));
+      wrap.insertBefore(entry, solvesEl); page.appendChild(wrap);
+    }
     selectTab('caja');
   }
   seed();
   assemble();
   doc.addEventListener('keydown', onKey);
-  host.__sxOff = function () { doc.removeEventListener('keydown', onKey); };
+  host.__sxOff = function () { doc.removeEventListener('keydown', onKey); if (host.__sxFs) host.__sxFs.close(true); if (host.__sxMq) host.__sxMq(); };
   host.__sx = { state: S, goto: goto, sell: sell, root: root, sh: sh };
 }
 
