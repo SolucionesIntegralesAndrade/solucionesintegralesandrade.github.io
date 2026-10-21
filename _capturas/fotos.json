@@ -1,18 +1,18 @@
 {
   "belleza": {
-    "bajadas": [
-      "portada.jpg (112 KB)",
-      "crema-manos.jpg (58 KB)",
-      "perfume-aceites.jpg (468 KB)",
-      "perfume-rojo.jpg (151 KB)",
-      "limpieza-espuma.jpg (99 KB)",
-      "crema-espejo.jpg (111 KB)",
-      "serum-gotero.jpg (141 KB)",
-      "crema-mano.jpg (118 KB)",
-      "pote-rosa.jpg (61 KB)",
-      "manteca-lata.jpg (146 KB)"
+    "bajadas": [],
+    "ya_estaban": [
+      "portada.jpg",
+      "crema-manos.jpg",
+      "perfume-aceites.jpg",
+      "perfume-rojo.jpg",
+      "limpieza-espuma.jpg",
+      "crema-espejo.jpg",
+      "serum-gotero.jpg",
+      "crema-mano.jpg",
+      "pote-rosa.jpg",
+      "manteca-lata.jpg"
     ],
-    "ya_estaban": [],
     "fallidas": []
   },
   "deco": {
@@ -37,19 +37,27 @@
     "fallidas": []
   },
   "joyeria": {
-    "bajadas": [
-      "aros-escama.jpg (202 KB)",
-      "aros-luna.jpg (575 KB)",
-      "aros-argolla-perfil.jpg (518 KB)",
-      "aros-trio.jpg (403 KB)",
-      "anillo-delfin.jpg (35 KB)",
-      "anillos-ola.jpg (258 KB)",
-      "anillos-manos.jpg (201 KB)",
-      "alianzas-madera.jpg (348 KB)",
-      "pulsera-bolitas.jpg (332 KB)",
-      "collar-cadena.jpg (96 KB)"
+    "bajadas": [],
+    "ya_estaban": [
+      "aros-escama.jpg",
+      "aros-luna.jpg",
+      "aros-argolla-perfil.jpg",
+      "aros-trio.jpg",
+      "anillo-delfin.jpg",
+      "anillos-ola.jpg",
+      "anillos-manos.jpg",
+      "alianzas-madera.jpg",
+      "pulsera-bolitas.jpg",
+      "collar-cadena.jpg",
+      "aros-hoop-triple.jpg",
+      "aros-trenzados.jpg",
+      "alianzas-caja.jpg",
+      "alianzas-oro.jpg",
+      "anillo-zafiro.jpg",
+      "anillos-pave-mano.jpg",
+      "cadenas-dijes.jpg",
+      "collar-eslabon.jpg"
     ],
-    "ya_estaban": [],
     "fallidas": []
   },
   "lenceria": {
@@ -76,7 +84,8 @@
       "tela-lino.jpg",
       "taller-perchero.jpg",
       "clienta-perchero.jpg",
-      "local-interior.jpg"
+      "local-interior.jpg",
+      "hero-vestido.jpg"
     ],
     "fallidas": []
   }
