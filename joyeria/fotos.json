@@ -58,5 +58,53 @@
     "url": "https://images.pexels.com/photos/16124724/pexels-photo-16124724.jpeg?auto=compress&cs=tinysrgb&w=1600",
     "fuente": "https://www.pexels.com/photo/16124724/",
     "credito": "Pexels"
+  },
+  {
+    "archivo": "aros-hoop-triple.jpg",
+    "url": "https://images.pexels.com/photos/12144990/pexels-photo-12144990.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "fuente": "https://www.pexels.com/photo/12144990/",
+    "credito": "Pexels"
+  },
+  {
+    "archivo": "aros-trenzados.jpg",
+    "url": "https://images.pexels.com/photos/3266700/pexels-photo-3266700.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "fuente": "https://www.pexels.com/photo/3266700/",
+    "credito": "Pexels"
+  },
+  {
+    "archivo": "alianzas-caja.jpg",
+    "url": "https://images.pexels.com/photos/11473459/pexels-photo-11473459.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "fuente": "https://www.pexels.com/photo/11473459/",
+    "credito": "Pexels"
+  },
+  {
+    "archivo": "alianzas-oro.jpg",
+    "url": "https://images.pexels.com/photos/1670723/pexels-photo-1670723.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "fuente": "https://www.pexels.com/photo/1670723/",
+    "credito": "Pexels"
+  },
+  {
+    "archivo": "anillo-zafiro.jpg",
+    "url": "https://images.pexels.com/photos/14058109/pexels-photo-14058109.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "fuente": "https://www.pexels.com/photo/14058109/",
+    "credito": "Pexels"
+  },
+  {
+    "archivo": "anillos-pave-mano.jpg",
+    "url": "https://images.pexels.com/photos/10799225/pexels-photo-10799225.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "fuente": "https://www.pexels.com/photo/10799225/",
+    "credito": "Pexels"
+  },
+  {
+    "archivo": "cadenas-dijes.jpg",
+    "url": "https://images.pexels.com/photos/7679654/pexels-photo-7679654.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "fuente": "https://www.pexels.com/photo/7679654/",
+    "credito": "Pexels"
+  },
+  {
+    "archivo": "collar-eslabon.jpg",
+    "url": "https://images.pexels.com/photos/6467618/pexels-photo-6467618.jpeg?auto=compress&cs=tinysrgb&w=1400",
+    "fuente": "https://www.pexels.com/photo/6467618/",
+    "credito": "Pexels"
   }
 ]

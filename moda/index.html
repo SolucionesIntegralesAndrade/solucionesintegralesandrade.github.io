@@ -77,17 +77,21 @@ em { font-style: italic; }
 #stage { position: fixed; inset: 0; z-index: 0; pointer-events: none; }
 #stage.gone { visibility: hidden; }
 :root:not(.js) #stage { display: none; }
-.plate { position: absolute; left: 0; top: 0; width: 100%; height: 100%; overflow: hidden; background: color-mix(in srgb, var(--acc) 20%, var(--paper));
+.plate { position: absolute; left: 0; top: 0; width: 100%; height: 100%; overflow: hidden; background: #c8cbdc;
 clip-path: inset(calc((1 - var(--intro, 0)) * 100%) 0 0 0); }
-.plate__in { position: absolute; inset: -5% 0; translate: 0 var(--py, 0px); scale: calc(1.16 - .16 * var(--intro, 0)); }
-.plate__in img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 24%; animation: kb 30s ease-in-out infinite alternate; }
+.plate__in { position: absolute; inset: -5% 0; translate: 0 var(--py, 0px); scale: calc(1.16 - .16 * var(--intro, 0)); container-type: size; }
+/* Foto de cuerpo entero: en el arco se ve completa (contain); al abrirse a pantalla completa pasa a cover y el zoom final cae sobre el vestido */
+.plate__in img { --h0: min(100cqh, 154.9cqw); --h1: max(100cqh, 154.9cqw); --h: calc(var(--h0) + (var(--h1) - var(--h0)) * var(--ex, 0)); position: absolute; height: var(--h); width: calc(var(--h) * .6455); max-width: none; left: calc((100cqw - var(--h) * .6455) / 2); top: calc((100cqh - var(--h)) * (.5 - .08 * var(--ex, 0))); transform-origin: 50% 50%; scale: calc(1 + .22 * var(--z, 0)); }
 .plate__scrim { position: absolute; inset: 0; opacity: var(--ex, 0); background: linear-gradient(180deg, rgba(28,19,14,.5) 0, rgba(28,19,14,.1) 24%, rgba(28,19,14,.14) 50%, rgba(28,19,14,.5) 80%, rgba(28,19,14,.78) 100%); }
-@keyframes kb { from { scale: 1.02; } to { scale: 1.13; } }
 .chrome { position: fixed; left: 0; right: 0; top: var(--barY, var(--bar)); z-index: 10; display: flex; justify-content: space-between; align-items: flex-start; padding: var(--cpy, var(--pad-y)) var(--pad-x); pointer-events: none; color: var(--ink); transition: color .45s; }
 .chrome::before { content: ""; position: absolute; inset: 0 0 auto 0; height: var(--hdr); z-index: -1; background: color-mix(in srgb, var(--bg) 91%, transparent); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); box-shadow: 0 1px 0 var(--i12); opacity: 0; transition: opacity .35s; }
 .chrome.solid::before { opacity: 1; }
-.chrome .brand, .chrome .burger { pointer-events: auto; }
-.chrome.on-photo .burger { color: var(--cream); }
+.chrome .brand, .chrome__r { pointer-events: auto; }
+.chrome__r { display: flex; align-items: center; gap: 6px; }
+.chrome__r .ig { width: 44px; height: 44px; margin: 0; display: grid; place-items: center; border-radius: 50%; }
+.chrome__r .ig svg { width: 20px; height: 20px; }
+.chrome.menu .chrome__r { color: var(--ink); }
+.chrome.on-photo .chrome__r { color: var(--cream); }
 .chrome.menu .brand { opacity: 0 !important; pointer-events: none; }
 .chrome.cov .brand:not(.brand--x) { visibility: hidden; }
 .chrome.menu .brand--x, .chrome.solid .brand--x { opacity: 0; }
@@ -120,7 +124,7 @@ main { position: relative; z-index: 1; }
 .how__head p { margin-top: 24px; max-width: 380px; }
 .visit { padding: calc(var(--pad-y) * 5) var(--pad-x); background: var(--bg); }
 .visit__grid { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 5fr); gap: clamp(32px, 6vw, 96px); align-items: center; }
-.cta { padding: calc(var(--pad-y) * 5) var(--pad-x) calc(var(--pad-y) * 2); background: var(--ink); color: var(--cream); position: relative; overflow: clip; }
+.cta { padding: calc(var(--pad-y) * 2) var(--pad-x) calc(var(--pad-y) * 2); background: var(--ink); color: var(--cream); position: relative; overflow: clip; }
 @media (max-width: 767px) {
 .hero__stage { grid-template-columns: 1fr; grid-template-rows: 0 1fr auto; }
 .hero__nav { display: none; }
@@ -239,7 +243,7 @@ main { position: relative; z-index: 1; }
 .hours div { display: flex; justify-content: space-between; gap: 16px; padding: 11px 0; border-top: 1.5px dashed var(--i24); }
 .hours div:last-child { border-bottom: 1.5px dashed var(--i24); }
 .hours dd { text-align: right; }
-.ig { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 28px; }
+p.ig { display: inline-flex; align-items: center; gap: 8px; margin-bottom: 28px; }
 .plano { background: var(--paper); border-radius: 999px 999px 0 0; overflow: hidden; aspect-ratio: 4 / 5; }
 .plano svg { width: 100%; height: 100%; }
 .pl-b { fill: var(--i08); } .pl-p { fill: #cfd5bd; } .pl-s { stroke: var(--bg); stroke-width: 15; fill: none; }
@@ -287,6 +291,24 @@ dialog::backdrop { background: color-mix(in srgb, #1d1511 62%, transparent); bac
 .wa__note { margin-top: 14px; color: var(--i70); }
 .wa .btn { margin-top: 16px; width: 100%; }
 }
+@layer components {
+.mark { display: flex; width: max-content; padding: clamp(28px, 4vw, 56px) 0; background: var(--ink); color: var(--cream); overflow: hidden; }
+.mark__t { display: flex; flex: none; gap: clamp(28px, 4vw, 64px); padding-right: clamp(28px, 4vw, 64px); font: 400 clamp(40px, 7vw, 104px)/1 var(--serif); letter-spacing: -.03em; white-space: nowrap; animation: mq 38s linear infinite; }
+.mark__t em { color: color-mix(in srgb, var(--acc) 70%, var(--cream)); }
+.mark__t i { align-self: center; width: .22em; height: .22em; border-radius: 50%; background: var(--acc); }
+@keyframes mq { to { translate: -100% 0; } }
+.markw { overflow: hidden; background: var(--ink); }
+.card__media { transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg)); transition: transform .5s var(--ease); will-change: transform; }
+.card__media.tilting { transition: transform .08s linear; }
+.card__media .gl { position: absolute; inset: 0; pointer-events: none; opacity: 0; background: radial-gradient(circle at var(--gx, 50%) var(--gy, 30%), rgba(255,255,255,.28), transparent 55%); transition: opacity .4s; }
+.card__media.tilting .gl { opacity: 1; }
+.btn.mag { transition: background .35s var(--ease), color .35s var(--ease), box-shadow .35s var(--ease), scale .15s, transform .35s var(--ease); }
+.vsw { position: fixed; right: 14px; bottom: 14px; z-index: 8; padding: 10px 16px; min-height: 44px; display: inline-flex; align-items: center; border-radius: 999px; background: color-mix(in srgb, var(--ink) 88%, transparent); color: var(--cream); font: 500 13px/1 var(--sans); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); transition: background .3s; }
+@media (hover: hover) { .vsw:hover { background: var(--acc); } }
+.av { flex: none; width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; background: color-mix(in srgb, var(--acc) 22%, var(--paper)); color: var(--ink); font: 400 17px/1 var(--serif); }
+.av.big { width: 56px; height: 56px; font-size: 22px; }
+@media (max-width: 600px) { .vsw { bottom: 10px; right: 10px; } }
+}
 @layer motion {
 .js [data-reveal] { --in: 0; }
 [data-reveal] { --in: 1; --out: 0; opacity: calc(var(--in) * (1 - var(--out))); translate: 0 calc((1 - var(--in)) * var(--in-y) - var(--out) * var(--out-y)); }
@@ -297,25 +319,29 @@ dialog::backdrop { background: color-mix(in srgb, #1d1511 62%, transparent); bac
 @media (prefers-reduced-motion: reduce) {
 [data-reveal] { translate: none !important; }
 [data-reveal].is-anim { filter: none; }
-.plate__in img, .pulse { animation: none; }
+.pulse, .mark__t, .mx__panel, .mx__bub { animation: none; }
+.card__media { transform: none !important; }
+.bb i { transition: none; }
 dialog[open] { animation: none; }
 #menu a.m { translate: 0 0; }
 }
 }
 </style>
+<link rel="stylesheet" href="/_comun/sistemas.css">
 </head>
 <body>
 
-<div class="bar" id="bar"><span>Demo hecha por Andrade Solutions · <a href="mailto:solucionesintegralesandradee@gmail.com?subject=Quiero%20mi%20tienda%20online">¿Querés una así para tu negocio?</a></span></div>
+<div class="bar" id="bar"><span>Demo hecha por Andrade Solutions · <a href="v2/">Ver versión B</a></span></div>
 
 <div id="stage" aria-hidden="true">
-  <div class="plate" id="plate"><div class="plate__in"><img src="fotos/portada.jpg" alt="" width="1600" height="2000" fetchpriority="high" decoding="async"></div><div class="plate__scrim"></div></div>
+  <div class="plate" id="plate"><div class="plate__in"><img src="fotos/hero-vestido.jpg" alt="Mujer de cuerpo entero con un vestido midi de algodón color arena, de mangas amplias" width="1162" height="1800" fetchpriority="high" decoding="async"></div><div class="plate__scrim"></div></div>
 </div>
 
 <div class="chrome" id="chrome">
   <a class="brand" href="#top" data-reveal style="--i:0" aria-label="Ojal, ir al inicio">Ojal<svg class="dot" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="12"/><circle class="h" cx="8.6" cy="9.6" r="1.7"/><circle class="h" cx="15.4" cy="9.6" r="1.7"/><circle class="h" cx="8.6" cy="14.4" r="1.7"/><circle class="h" cx="15.4" cy="14.4" r="1.7"/></svg></a>
   <span class="brand brand--x" id="brandx" aria-hidden="true">Ojal<svg class="dot" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12"/></svg></span>
-  <button class="burger" id="burger" type="button" aria-label="Menú" aria-expanded="false" aria-controls="menu" data-reveal style="--i:5"><span></span><span></span></button>
+  <div class="chrome__r"><a class="ig" data-vista-celu href="#contacto" aria-label="Instagram de Ojal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".6" fill="currentColor"/></svg></a>
+  <button class="burger" id="burger" type="button" aria-label="Menú" aria-expanded="false" aria-controls="menu" data-reveal style="--i:5"><span></span><span></span></button></div>
 </div>
 
 <nav id="menu" aria-label="Menú">
@@ -323,6 +349,7 @@ dialog[open] { animation: none; }
   <a class="m" style="--n:1" href="#hecho">Hecho acá</a>
   <a class="m" style="--n:2" href="#comprar">Cómo comprar</a>
   <a class="m" style="--n:3" href="#visitanos">Visitanos<small>City Bell</small></a>
+  <a class="m" style="--n:4" href="#sistemas">Sumale a tu tienda<small>opcional</small></a>
   <p class="t-small">Calle 13 entre 473 y 474, City Bell · Envíos a La Plata y alrededores</p>
 </nav>
 
@@ -338,7 +365,7 @@ dialog[open] { animation: none; }
       </nav>
       <p class="hero__lede t-lead" data-reveal data-x=".07" style="--i:6">Ropa de autor, cortada y cosida en City Bell. Lino, algodón y tejidos para usar todo el año.</p>
       <a class="hero__cta btn" href="#tienda" data-reveal data-x=".13" style="--i:7">Ver la tienda</a>
-      <p class="hero__cap t-small" id="cap" data-reveal><span>Primavera · verano 26/27</span><a href="#vestido-jacaranda">En la foto: Vestido Jacarandá</a></p>
+      <p class="hero__cap t-small" id="cap" data-reveal><span>Primavera · verano 26/27</span><a href="#tienda">En la foto: vestido midi de algodón</a></p>
     </div>
   </section>
 
@@ -377,6 +404,8 @@ dialog[open] { animation: none; }
     </div>
     <div class="shop__grid" id="grid"></div>
   </section>
+
+  <div class="markw" aria-hidden="true"><div class="mark"><div class="mark__t"><span>Lino lavado</span><i></i><span><em>Hecho</em> en City Bell</span><i></i><span>Algodón peinado</span><i></i><span>Tanda corta</span><i></i><span>Botones de nácar</span><i></i></div><div class="mark__t"><span>Lino lavado</span><i></i><span><em>Hecho</em> en City Bell</span><i></i><span>Algodón peinado</span><i></i><span>Tanda corta</span><i></i><span>Botones de nácar</span><i></i></div></div></div>
 
   <section id="comprar" class="how">
     <div class="how__grid">
@@ -422,14 +451,13 @@ dialog[open] { animation: none; }
       </figure>
     </div>
   </section>
+  <section id="sistemas" data-sistemas data-rubro="moda" data-marca="Ojal" style="--sx-bg:#e9e0d2;--sx-fg:#2a211c;--sx-accent:#a8472b;--sx-surface:#fbf8f3;--sx-line:rgba(42,33,28,.18);--sx-display:'Instrument Serif',serif;--sx-body:'Hanken Grotesk',sans-serif;--sx-radius:16px"></section>
+  <section id="contacto" data-contacto style="--sx-bg:#2a211c;--sx-fg:#fbf8f3;--sx-accent:#d9876a;--sx-surface:#3a2f28;--sx-line:rgba(251,248,243,.2);--sx-display:'Instrument Serif',serif;--sx-body:'Hanken Grotesk',sans-serif;--sx-radius:16px"></section>
 </main>
 
 <footer class="cta">
-  <h2 class="t-h1" data-reveal data-flow style="--i:0">¿Querés una tienda así <em>para tu negocio</em>?</h2>
-  <p class="t-body" data-reveal data-flow style="--i:1">Catálogo, precios y consultas por WhatsApp, con tus productos y tu estilo. Escribinos y te mostramos cómo quedaría.</p>
-  <div data-reveal data-flow style="--i:2"><a class="btn btn--light" href="mailto:solucionesintegralesandradee@gmail.com?subject=Quiero%20mi%20tienda%20online">Quiero la mía</a></div>
   <div class="cta__mark" aria-hidden="true">Ojal.</div>
-  <div class="cta__fine"><span>Marca y productos ficticios. Fotos: Pexels.</span><span>Demo hecha por Andrade Solutions · <a href="mailto:solucionesintegralesandradee@gmail.com?subject=Quiero%20mi%20tienda%20online">¿Querés una así para tu negocio?</a></span></div>
+  <div class="cta__fine"><span>Marca y productos ficticios. Fotos: Pexels. · <a href="v2/">Ver versión B</a></span><span>Demo hecha por Andrade Solutions</span></div>
 </footer>
 
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
@@ -648,6 +676,7 @@ function frame(now) {
  }
  plate.style.setProperty('--intro', intro.toFixed(3));
  plate.style.setProperty('--ex', ex.toFixed(3));
+ plate.style.setProperty('--z', (reduced ? 0 : ease(win(p1, .55, .45))).toFixed(3));
  const py = reduced ? 0 : -Math.min(y, T.hero + T.heroH) * .045;
  if (Math.abs(py - pPy) > .3) { pPy = py; plate.style.setProperty('--py', py.toFixed(1) + 'px'); }
  stageEl.classList.toggle('gone', secTop <= 0);
@@ -714,7 +743,7 @@ function frame(now) {
   setReveal(el, reduced ? (top < .94 ? 1 : 0) : cubicOut((.92 - top) / .30 - i * .11), 0, true);
  });
 
- if (!R.classList.contains('live')) R.classList.add('live');
+ if (!R.classList.contains('live')) R.classList.add('live', 'js');
  requestAnimationFrame(frame);
 }
 requestAnimationFrame(frame);
@@ -744,6 +773,7 @@ const dlg = $('#wa'), msgEl = $('#wa-msg'), pick = $('#pick');
 let cur = null, sel = { s: 'M', c: 0 };
 const SITE = location.origin + location.pathname.replace(/index\.html$/, '');
 function msgText() {
+ if (cur && cur.mod) return `¡Hola! Vi la demo de ${MARCA} y me interesa sumar a mi tienda la caja, las clientas y la gestión. ¿Me cuentan cómo funciona?`;
  if (!cur) return `¡Hola ${MARCA}! Vi su tienda online y quería hacerles una consulta sobre la colección y los talles. ¿Me ayudan?`;
  const c = cur.c[sel.c][0];
  return `¡Hola ${MARCA}! Quería consultar por el *${cur.n}* (talle ${sel.s}, color ${c}) · ${money(cur.p)}.\nLo vi acá: ${SITE}#${cur.id}\n¿Lo tienen disponible?`;
@@ -768,16 +798,34 @@ function chips(label, items, key) {
 }
 function openWA(p) {
  cur = p; sel = { s: 'M', c: 0 }; pick.textContent = '';
- if (p) { pick.append(chips('Talle', TALLES, 's')); if (p.c.length > 1) pick.append(chips('Color', p.c, 'c')); }
+ $('#wa-t').textContent = p && p.mod ? 'Así consultarías por los módulos' : 'Así le llega tu consulta a la tienda';
+ if (p && !p.mod) { pick.append(chips('Talle', TALLES, 's')); if (p.c.length > 1) pick.append(chips('Color', p.c, 'c')); }
  renderMsg(); dlg.showModal(); R.classList.add('lock');
 }
 document.addEventListener('click', e => {
  const b = e.target.closest('[data-wa]'); if (b) openWA(PRODUCTOS.find(p => p.id === b.dataset.wa));
  if (e.target.closest('#wa-general')) openWA(null);
+ if (e.target.closest('[data-wa-mod]')) openWA({ mod: true });
  if (e.target.closest('[data-close]')) dlg.close();
 });
 dlg.addEventListener('click', e => { if (e.target === dlg) dlg.close(); });
 dlg.addEventListener('close', () => R.classList.toggle('lock', menu.classList.contains('open')));
+/* ---------- Tilt 3D en fotos y imán en botones (solo mouse) ---------- */
+if (!reduced && matchMedia('(hover: hover) and (pointer: fine)').matches) {
+ $$('.card__media').forEach(m => {
+  const g = document.createElement('span'); g.className = 'gl'; m.append(g);
+  m.addEventListener('pointermove', e => { const r = m.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height; m.classList.add('tilting'); m.style.setProperty('--ry', ((x - .5) * 9).toFixed(2) + 'deg'); m.style.setProperty('--rx', ((.5 - y) * 9).toFixed(2) + 'deg'); m.style.setProperty('--gx', (x * 100) + '%'); m.style.setProperty('--gy', (y * 100) + '%'); });
+  m.addEventListener('pointerleave', () => { m.classList.remove('tilting'); m.style.setProperty('--rx', '0deg'); m.style.setProperty('--ry', '0deg'); });
+ });
+ $$('.card .btn, .mag').forEach(b => {
+  b.classList.add('mag');
+  b.addEventListener('pointermove', e => { const r = b.getBoundingClientRect(); b.style.transform = `translate(${((e.clientX - r.left - r.width / 2) * .18).toFixed(1)}px, ${((e.clientY - r.top - r.height / 2) * .28).toFixed(1)}px)`; });
+  b.addEventListener('pointerleave', () => { b.style.transform = ''; });
+ });
+}
 </script>
+<script src="/_comun/sistemas.js" defer></script>
+<script src="/_comun/contacto.js" defer></script>
+<script src="/_comun/vista-celu.js" defer></script>
 </body>
 </html>

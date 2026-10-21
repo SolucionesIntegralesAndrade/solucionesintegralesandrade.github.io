@@ -2,7 +2,7 @@
 <html lang="es-AR">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex">
 <title>Ofelia. Lencería, pijamas y trajes de baño</title>
 <meta name="description" content="Ofelia: lencería, pijamas y trajes de baño en City Bell. Elegí tu talle y color, consultanos por WhatsApp y te lo mandamos con envío discreto a La Plata y alrededores.">
@@ -145,6 +145,7 @@ main{position: relative;z-index: 1;}
 .brand__initial{font-family: 'Playball', cursive;font-weight: 400;letter-spacing: 0;font-size: 1.04em;line-height: 0;margin-right: -.04em;translate: 0 -.01em;display: inline-block;}
 .nav{display: flex;gap: clamp(18px, 2.2vw, 36px);margin-top: -8px;}
 .nav a, .menu__links a{position: relative;transition: color 200ms;}
+.nav .ig{padding-top: 0;}
 .nav a{display: inline-flex;align-items: center;min-height: 44px;padding-top: 5px;}
 .nav a::after{content: '';position: absolute;left: 0;right: 0;bottom: 8px;height: 1px;background: currentColor;transform: scaleX(0);transform-origin: left;transition: transform 500ms var(--e);}
 .nav a[aria-current="true"]::after{transform: scaleX(1);}
@@ -327,6 +328,68 @@ html.nr [data-reveal]{--in: 1 !important;--out: 0 !important;filter: none !impor
 .modal, .modal__panel, .menu{transition: none;}
 }
 }
+/* ===== Extras v3 (premium) ===== */
+.btn{transition: background 350ms var(--e), color 350ms var(--e), border-color 350ms, scale 150ms, translate 450ms var(--e);}
+.btn.is-mag{translate: var(--mx, 0) var(--my, 0);transition: background 350ms var(--e), color 350ms var(--e), border-color 350ms, scale 150ms, translate 120ms linear;}
+.scrollbar{position: fixed;left: 0;top: 0;height: 2px;width: 100%;background: var(--bordo);transform-origin: left;transform: scaleX(var(--sp, 0));z-index: 70;pointer-events: none;}
+body::after{content: '';position: fixed;inset: 0;z-index: 15;pointer-events: none;opacity: .05;mix-blend-mode: multiply;background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");}
+.badge{translate: 0 var(--by, 0);}
+.hero__lede{font-size: clamp(26px, 2.7vw, 40px);}
+/* Historia */
+.story{height: 340svh;position: relative;background: var(--bordo-d);color: var(--crema);--em: var(--rosa);}
+.story__stage{position: sticky;top: 0;height: 100svh;display: grid;grid-template-columns: minmax(0, 6fr) minmax(0, 5fr);column-gap: calc(var(--pad-x) * 2);align-items: center;padding: calc(var(--bar-h) + 24px) var(--pad-x) var(--pad-y);overflow: hidden;}
+.story__txt{position: relative;align-self: stretch;display: grid;grid-template: 1fr / 1fr;align-content: center;}
+.story__n{position: absolute;top: 0;left: 0;font: 400 14px var(--sans);color: color-mix(in srgb, var(--crema) 70%, transparent);}
+.story__n b{font: 300 34px var(--serif);color: var(--crema);}
+.story__act{grid-area: 1 / 1;align-self: center;opacity: 0;translate: 0 28px;filter: blur(8px);transition: opacity 800ms var(--e), translate 900ms var(--e), filter 800ms var(--e);pointer-events: none;}
+.story__act.is-on{opacity: 1;translate: 0 0;filter: none;}
+.story__act p{margin-bottom: 18px;color: color-mix(in srgb, var(--crema) 74%, transparent);}
+.story__act h2{font-size: clamp(44px, 7.4vw, 112px);}
+.story__bar{position: absolute;left: 0;right: 0;bottom: 0;height: 1px;background: var(--line-d);}
+.story__bar i{display: block;height: 100%;background: var(--rosa);transform-origin: left;transform: scaleX(0);}
+.story__frame{position: relative;align-self: stretch;margin-block: 0;border-radius: 999px 999px 0 0;overflow: hidden;background: var(--bordo);}
+.story__frame img{position: absolute;inset: 0;width: 100%;height: 100%;object-fit: cover;opacity: 0;scale: 1.12;clip-path: inset(0 0 12% 0);transition: opacity 1s ease, scale 1.6s var(--e), clip-path 1.2s var(--e);}
+.story__frame img.is-on{opacity: 1;scale: 1;clip-path: inset(0);}
+@media (max-width: 767px){
+.story{height: 320svh;}
+.story__stage{grid-template-columns: 1fr;grid-template-rows: minmax(0, 1fr) minmax(0, 44%);row-gap: 18px;}
+.story__frame{grid-row: 1;border-radius: 999px 999px 0 0;}
+.story__txt{grid-row: 2;}
+.story__n{top: -4px;}
+.story__act h2{font-size: clamp(38px, 11vw, 60px);}
+}
+/* Tilt + clip en colecciones */
+.colec .ph, .prod .ph{transform: perspective(900px) rotateX(var(--rx, 0deg)) rotateY(var(--ry, 0deg));transition: transform 500ms var(--e);will-change: transform;}
+.colec .ph::after, .prod .ph::after{content: '';position: absolute;inset: 0;pointer-events: none;opacity: 0;background: radial-gradient(60% 50% at var(--gx, 50%) var(--gy, 30%), rgb(255 255 255 / .34), transparent 70%);transition: opacity 400ms;}
+.colec .ph{clip-path: inset(calc((1 - var(--in, 1)) * 14%) 0 0 0 round 2px);}
+@media (hover: hover) and (pointer: fine){.colec .ph:hover::after, .prod .ph:hover::after{opacity: 1;} }
+/* Sumar a la consulta */
+.fav{position: absolute;left: 10px;bottom: 10px;z-index: 3;min-height: 40px;padding: 6px 14px 6px 10px;display: inline-flex;align-items: center;gap: 8px;border-radius: 99px;background: color-mix(in srgb, var(--bg) 92%, transparent);backdrop-filter: blur(8px);-webkit-backdrop-filter: blur(8px);font: 500 12.5px/1 var(--sans);color: var(--bordo-d);transition: background 300ms, color 300ms;}
+.fav::after{content: '';position: absolute;inset: -4px;}
+.fav > span:first-child{display: grid;place-items: center;width: 22px;height: 22px;border-radius: 50%;background: var(--bordo);color: var(--crema);font-size: 15px;line-height: 1;}
+.fav[aria-pressed="true"]{background: var(--bordo);color: var(--crema);}
+.fav[aria-pressed="true"] > span:first-child{background: var(--crema);color: var(--bordo);}
+@media (max-width: 767px){.fav__t{display: none;} .fav{padding: 6px;} }
+.cartbar{position: fixed;left: 50%;bottom: 16px;translate: -50% 0;z-index: 40;display: flex;align-items: center;gap: 16px;min-height: 52px;padding: 8px 8px 8px 22px;border-radius: 99px;background: var(--bordo-d);color: var(--crema);box-shadow: 0 14px 40px rgb(70 16 31 / .35);font-size: 15px;font-weight: 500;animation: rise 600ms var(--e);}
+.cartbar__go{background: var(--crema);color: var(--bordo-d);border-radius: 99px;padding: 10px 16px;font-size: 14px;}
+@keyframes rise{from{opacity: 0;translate: -50% 20px;} }
+.vswitch{position: fixed;left: 12px;bottom: 12px;z-index: 35;font: 500 12.5px var(--sans);min-height: 36px;display: inline-flex;align-items: center;gap: 6px;padding: 6px 14px;border-radius: 99px;background: color-mix(in srgb, var(--bg) 88%, transparent);backdrop-filter: blur(10px);-webkit-backdrop-filter: blur(10px);border: 1px solid var(--ink-24);color: var(--ink);}
+.vswitch:hover{background: var(--ink);color: var(--crema);}
+@media (max-width: 767px){.vswitch{display: none;} .cartbar{bottom: calc(12px + env(safe-area-inset-bottom));width: calc(100% - 24px);justify-content: space-between;} .footwrap{padding-bottom: calc(96px + env(safe-area-inset-bottom));} }
+@media (pointer: coarse){.fav{min-height: 44px;min-width: 44px;justify-content: center;} .sw{width: 32px;height: 32px;} .size,.chip{min-height: 48px;}}
+.modal{padding: max(16px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right)) max(16px, env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left));}
+.modal__panel{overscroll-behavior: contain;}
+/* Footer separado */
+.footwrap{padding: calc(var(--pad-y) * 3) var(--pad-x) var(--pad-y);}
+.footwrap .foot{margin-top: 0;}
+.footwrap a{display: inline-flex;align-items: center;min-height: 44px;text-decoration: underline;text-underline-offset: 3px;}
+.footwrap .foot__word{margin-top: 0;}
+@media (prefers-reduced-motion: reduce){
+.story__act, .story__frame img, .colec .ph, .prod .ph, .btn{transition: none;}
+.erp__chart.go i, .cartbar{animation: none;}
+.colec .ph{clip-path: none;}
+body::after{display: none;}
+}
 </style>
 </head>
 <body>
@@ -339,11 +402,11 @@ html.nr [data-reveal]{--in: 1 !important;--out: 0 !important;filter: none !impor
 <symbol id="i-ar" viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></symbol>
 <symbol id="i-wa" viewBox="0 0 24 24"><path d="M4 20l1.3-4.1A8.2 8.2 0 1 1 8.2 18.8L4 20z"/></symbol>
 </defs></svg>
-<a class="strip" id="strip" href="mailto:solucionesintegralesandradee@gmail.com?subject=Quiero%20mi%20tienda%20online"><span>Demo hecha por Andrade Solutions</span><i aria-hidden="true">·</i><span class="strip__cta">¿Querés una así para tu negocio?</span></a>
+<div class="strip" id="strip"><span>Demo hecha por Andrade Solutions</span><i aria-hidden="true">·</i><a class="strip__cta" href="v2/">Ver versión B</a></div>
 <header class="chrome" id="chrome">
 <a class="brand" id="brand" href="#top" aria-label="Ofelia, ir al inicio" data-reveal="l0"><span class="brand__initial">O</span>felia.</a>
 <nav class="nav t-ui" id="nav" aria-label="Principal" data-reveal="l3">
-<a href="#colecciones">Colecciones</a><a href="#destacados">Destacados</a><a href="#talles">Talles</a><a href="#como-comprar">Cómo comprar</a><a href="#visitanos">Visitanos</a>
+<a href="#colecciones">Colecciones</a><a href="#destacados">Destacados</a><a href="#talles">Talles</a><a href="#como-comprar">Cómo comprar</a><a href="#visitanos">Visitanos</a><a href="#sistemas">Sistemas</a><a class="ig" href="#visitanos" aria-label="Instagram @ofelia.demo"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r=".8" fill="currentColor" stroke="none"/></svg></a>
 </nav>
 <button class="burger" id="burger" type="button" aria-label="Menú" aria-expanded="false" aria-controls="menu" data-reveal="l3"><span></span><span></span></button>
 </header>
@@ -355,6 +418,8 @@ html.nr [data-reveal]{--in: 1 !important;--out: 0 !important;filter: none !impor
 <a href="#talles">Guía de talles</a>
 <a href="#como-comprar">Cómo comprar</a>
 <a href="#visitanos">Visitanos</a>
+<a href="#sistemas">Sumale a tu tienda</a>
+<a href="v2/">Ver versión B</a>
 </nav>
 <div>
 <p class="t-small is-demoted" style="margin:28px 0 14px">Calle 13 entre 473 y 474, City Bell</p>
@@ -401,6 +466,22 @@ html.nr [data-reveal]{--in: 1 !important;--out: 0 !important;filter: none !impor
 <li data-reveal="s1"><b>24–48 h</b><span class="t-body is-demoted">Envío discreto a La Plata y alrededores.</span></li>
 <li data-reveal="s2"><b>10%</b><span class="t-body is-demoted">De descuento si pagás por transferencia.</span></li>
 </ul>
+</section>
+<section class="story" id="historia" aria-label="Un día con Ofelia">
+<div class="story__stage" id="storyStage">
+<div class="story__txt">
+<p class="story__n" aria-hidden="true"><b id="storyN">01</b> / 03</p>
+<div class="story__act is-on"><p class="t-small">Por la mañana</p><h2 class="t-xl">Algodón que <em>se siente</em> como nada.</h2></div>
+<div class="story__act"><p class="t-small">A la tarde</p><h2 class="t-xl">Encaje liviano, <em>sin aro.</em></h2></div>
+<div class="story__act"><p class="t-small">En verano</p><h2 class="t-xl">Un entero que te hace <em>sentir vos.</em></h2></div>
+<div class="story__bar" aria-hidden="true"><i id="storyBar"></i></div>
+</div>
+<div class="story__frame" aria-hidden="true">
+<img class="is-on" src="fotos/pijama.jpg" alt="" width="800" height="1200" loading="lazy" decoding="async" style="object-position:20% 20%">
+<img src="fotos/p-nacar.jpg" alt="" width="800" height="1200" loading="lazy" decoding="async" style="object-position:100% 10%">
+<img src="fotos/p-marea.jpg" alt="" width="800" height="1200" loading="lazy" decoding="async" style="object-position:50% 70%">
+</div>
+</div>
 </section>
 <section class="sec sec--velo" id="colecciones" aria-labelledby="t-col">
 <div class="head">
@@ -504,15 +585,27 @@ html.nr [data-reveal]{--in: 1 !important;--out: 0 !important;filter: none !impor
 </figure>
 </div>
 <figure class="ph visit__ph" data-reveal="s0" style="--tint:#5c2535"><img src="fotos/local.jpg" alt="Percha de ropa clara y plantas en el local" width="800" height="534" loading="lazy" decoding="async" style="--fp:50% 58%"></figure>
+</section>
+<link rel="stylesheet" href="/_comun/sistemas.css">
+<section id="sistemas" data-sistemas data-rubro="lenceria" data-marca="Ofelia" style="--sx-bg:#f3e4db;--sx-fg:#3b1f27;--sx-accent:#6a1d33;--sx-surface:#f8f1e8;--sx-line:rgba(59,31,39,.16);--sx-display:'Cormorant Garamond',serif;--sx-body:'Hanken Grotesk',sans-serif;--sx-radius:16px"></section>
+<section id="contacto" data-contacto style="--sx-bg:#f3e4db;--sx-fg:#3b1f27;--sx-accent:#6a1d33;--sx-surface:#f8f1e8;--sx-line:rgba(59,31,39,.16);--sx-display:'Cormorant Garamond',serif;--sx-body:'Hanken Grotesk',sans-serif;--sx-radius:16px"></section>
+<script src="/_comun/sistemas.js" defer></script>
+<script src="/_comun/contacto.js" defer></script>
+<script src="/_comun/vista-celu.js" defer></script>
+</main>
+<div class="dark footwrap">
 <footer class="foot">
 <p class="foot__word" aria-hidden="true"><span class="brand__initial">O</span>felia.</p>
 <div class="foot__row t-small">
-<p>Marca y productos ficticios. Fotos: Pexels. Ilustraciones propias.</p>
+<p>Demo con marca y productos ficticios. Fotos: Pexels. Ilustraciones propias.</p>
+<p><a href="v2/">Ver versión B</a></p>
 <p>Demo hecha por <a href="mailto:solucionesintegralesandradee@gmail.com?subject=Quiero%20mi%20tienda%20online">Andrade Solutions</a></p>
 </div>
 </footer>
-</section>
-</main>
+</div>
+<a class="vswitch" href="v2/" aria-label="Ver versión B de esta demo">Ver versión B <span aria-hidden="true">→</span></a>
+<button class="cartbar" id="cartbar" type="button" data-wa="cart" hidden><span>Mi consulta · <b id="cartN">0</b></span><span class="cartbar__go">Enviar por WhatsApp</span></button>
+<div class="scrollbar" id="scrollbar" aria-hidden="true"></div>
 <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modal-t" hidden>
 <div class="modal__panel">
 <button class="modal__x" type="button" id="modalX" aria-label="Cerrar"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 5l14 14M19 5L5 19"/></svg></button>
@@ -588,7 +681,7 @@ const quedan = p.talles.filter(t => !p.sin.includes(t));
 const stock = p.sin.length ? `Sin stock en talle ${p.sin.join(' y ')}` : 'Hay todos los talles';
 return `
 <article class="prod" id="p-${p.id}" data-cat="${p.cat}" data-reveal="s${i % 4}" style="--tint:${p.tono}">
-<div class="ph r45">${ill(p.sim)}${photo(p.foto)}${p.tag ? `<span class="tag">${p.tag}</span>` : ''}</div>
+<div class="ph r45">${ill(p.sim)}${photo(p.foto)}${p.tag ? `<span class="tag">${p.tag}</span>` : ''}<button class="fav" type="button" aria-pressed="false" data-fav="${p.id}"><span aria-hidden="true">+</span><span class="fav__t">Sumar a mi consulta</span></button></div>
 <div class="prod__row"><h3 class="t-title">${p.nombre}</h3><p class="prod__price">${money(p.precio)}</p></div>
 <p class="t-small is-demoted">${p.desc}</p>
 <p class="prod__tr t-small"><b>${money(transf(p.precio))}</b> <span class="is-demoted">con transferencia</span></p>
@@ -662,7 +755,7 @@ const archInner = $('#archInner');
 const loadNodes = $$('[data-reveal^="l"]').sort((a, b) => rIdx(a) - rIdx(b));
 const exitNodes = $$('[data-exit]');
 const navLinks = $$('.nav a, .menu__links a');
-const spyIds = ['colecciones', 'destacados', 'talles', 'como-comprar', 'visitanos'];
+const spyIds = ['colecciones', 'destacados', 'talles', 'como-comprar', 'visitanos', 'sistemas'];
 const spy = spyIds.map(id => document.getElementById(id));
 let shrinkEnd = .2, stripH = strip.offsetHeight;
 function measure() {
@@ -718,6 +811,14 @@ else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); f
 }
 });
 function mensaje(id, card) {
+if (id === 'modulos') return ['¡Hola! Vi la demo de Ofelia y me interesa sumar a mi tienda: caja (POS), clientas (CRM) o gestión (ERP).', '', '¿Me cuentan cómo funciona?'];
+if (id === 'cart') {
+const out = ['¡Hola! Quiero consultar por estas prendas:', ''];
+[...favs].forEach(pid => { const p = PRODUCTOS.find(x => x.id === pid), cd = document.getElementById('p-' + pid);
+const col = $('.sw[aria-pressed="true"]', cd)?.dataset.c || p.col[0][0], tl = $('.size[aria-pressed="true"]', cd)?.dataset.t;
+out.push('· ' + p.nombre + ' · ' + col + ' · talle ' + (tl || 'a confirmar') + ' · ' + money(p.precio)); });
+out.push('', '¿Las tienen disponibles?'); return out;
+}
 if (id === 'talles') return ['¡Hola! Necesito ayuda para elegir mi talle.', '', 'Mis medidas:', 'Bajo busto: ', 'Busto: ', 'Cintura: ', 'Cadera: ', '', '¿Me asesoran?'];
 if (id === 'hola') return ['¡Hola ' + MARCA.nombre + '! Quería hacerles una consulta.'];
 const p = PRODUCTOS.find(x => x.id === id);
@@ -791,6 +892,63 @@ navLinks.forEach(a => a.setAttribute('aria-current', String(a.getAttribute('href
 requestAnimationFrame(frame);
 }
 requestAnimationFrame(frame);
+/* ---------- Extras premium ---------- */
+const fine = matchMedia('(hover: hover) and (pointer: fine)').matches;
+/* Consulta fluida: sumar prendas y mandar todo en un solo mensaje */
+const favs = new Set(), cartbar = $('#cartbar'), cartN = $('#cartN');
+document.addEventListener('click', e => {
+const f = e.target.closest('.fav'); if (!f) return;
+const id = f.dataset.fav, on = !favs.has(id);
+on ? favs.add(id) : favs.delete(id);
+f.setAttribute('aria-pressed', String(on));
+$('span', f).textContent = on ? '✓' : '+';
+$('.fav__t', f).textContent = on ? 'Sumada a tu consulta' : 'Sumar a mi consulta';
+cartN.textContent = favs.size + (favs.size === 1 ? ' prenda' : ' prendas');
+cartbar.hidden = favs.size === 0;
+});
+/* Tilt 3D con brillo + imán en botones (solo mouse) */
+if (fine && !reduced) {
+let tiltEl = null;
+document.addEventListener('pointermove', e => {
+const t = e.target.closest('.colec .ph, .prod .ph');
+if (tiltEl && tiltEl !== t) { tiltEl.style.setProperty('--rx', '0deg'); tiltEl.style.setProperty('--ry', '0deg'); tiltEl = null; }
+if (t) {
+const r = t.getBoundingClientRect(), x = (e.clientX - r.left) / r.width, y = (e.clientY - r.top) / r.height;
+t.style.setProperty('--ry', ((x - .5) * 9).toFixed(2) + 'deg'); t.style.setProperty('--rx', ((.5 - y) * 9).toFixed(2) + 'deg');
+t.style.setProperty('--gx', (x * 100).toFixed(0) + '%'); t.style.setProperty('--gy', (y * 100).toFixed(0) + '%');
+tiltEl = t;
+}
+const b = e.target.closest('.hero__cta .btn, .visit .btn, .ask .btn');
+$$('.is-mag').forEach(m => { if (m !== b) { m.classList.remove('is-mag'); m.style.setProperty('--mx', '0px'); m.style.setProperty('--my', '0px'); } });
+if (b) { const r = b.getBoundingClientRect(); b.classList.add('is-mag');
+b.style.setProperty('--mx', ((e.clientX - r.left - r.width / 2) * .22).toFixed(1) + 'px'); b.style.setProperty('--my', ((e.clientY - r.top - r.height / 2) * .3).toFixed(1) + 'px'); }
+}, { passive: true });
+}
+/* Números que cuentan al aparecer */
+if (!reduced) {
+$$('.facts b').forEach(b => {
+const txt = b.textContent; b.setAttribute('aria-label', txt); b.textContent = txt.replace(/\d+/g, '0');
+const io = new IntersectionObserver(en => { if (!en[0].isIntersecting) return; io.disconnect(); const t0 = performance.now();
+(function step(n) { const k = expoOut((n - t0) / 1500); b.textContent = txt.replace(/\d+/g, m => Math.round(+m * k)); if (k < 1) requestAnimationFrame(step); else b.textContent = txt; })(t0); }, { threshold: .6 });
+io.observe(b);
+});
+}
+/* Historia en tres actos (scroll atado) + paralaje del hero + barra de progreso */
+const story = $('#historia'), acts = $$('.story__act'), simgs = $$('.story__frame img'), storyN = $('#storyN'), storyBar = $('#storyBar'), sbar = $('#scrollbar'), badge = $('.badge');
+let storyIdx = -1, tick = false;
+function onScroll() {
+tick = false;
+const vh = innerHeight, max = document.documentElement.scrollHeight - vh;
+sbar.style.setProperty('--sp', (max > 0 ? scrollY / max : 0).toFixed(4));
+const r = story.getBoundingClientRect(), p = clamp(-r.top / Math.max(1, r.height - vh));
+storyBar.style.transform = 'scaleX(' + p.toFixed(3) + ')';
+const idx = Math.min(2, Math.floor(p * 3));
+if (idx !== storyIdx) { storyIdx = idx; acts.forEach((a, k) => a.classList.toggle('is-on', k === idx)); simgs.forEach((im, k) => im.classList.toggle('is-on', k === idx)); storyN.textContent = '0' + (idx + 1); }
+if (!reduced && badge) badge.style.setProperty('--by', (clamp(scrollY / vh, 0, 1.5) * -70).toFixed(1) + 'px');
+}
+addEventListener('scroll', () => { if (!tick) { tick = true; requestAnimationFrame(onScroll); } }, { passive: true });
+onScroll();
+
 }
 </script>
 </body>
