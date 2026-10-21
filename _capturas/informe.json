@@ -7,7 +7,7 @@
     "pedidos_fallidos": [],
     "alto_compu": 11602,
     "scroll_horizontal_compu": false,
-    "alto_celu": 12540,
+    "alto_celu": 12280,
     "scroll_horizontal_celu": false
   },
   "deco": {
@@ -18,7 +18,7 @@
     "pedidos_fallidos": [],
     "alto_compu": 15075,
     "scroll_horizontal_compu": false,
-    "alto_celu": 17022,
+    "alto_celu": 16743,
     "scroll_horizontal_celu": false
   },
   "joyeria": {
@@ -29,7 +29,7 @@
     "pedidos_fallidos": [],
     "alto_compu": 13274,
     "scroll_horizontal_compu": false,
-    "alto_celu": 13980,
+    "alto_celu": 13701,
     "scroll_horizontal_celu": false
   },
   "lenceria": {
@@ -40,7 +40,7 @@
     "pedidos_fallidos": [],
     "alto_compu": 15349,
     "scroll_horizontal_compu": false,
-    "alto_celu": 16230,
+    "alto_celu": 15951,
     "scroll_horizontal_celu": false
   },
   "moda": {
@@ -51,7 +51,7 @@
     "pedidos_fallidos": [],
     "alto_compu": 12379,
     "scroll_horizontal_compu": false,
-    "alto_celu": 11452,
+    "alto_celu": 11174,
     "scroll_horizontal_celu": false
   }
 }
