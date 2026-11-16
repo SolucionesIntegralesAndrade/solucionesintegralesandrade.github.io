@@ -179,7 +179,7 @@ var RUBROS = {
     prefs: ['Talle de corpiño 90', 'Prefiere algodón y sin aro', 'Colores: negro y bordó', 'Talle M en bombachas', 'Busca conjuntos para regalar'],
     problems: ['Talles que se agotan y no te enterás', 'Clientas que no vuelven porque nadie las recontacta', 'Ventas del local y de Instagram anotadas en cuadernos distintos'],
     products: [
-      ['Corpiño push up Ofelia', 'Corpiños', 9800, 22900, ['85', '90', '95', '100'], 0, 3], ['Corpiño sin aro algodón', 'Corpiños', 7600, 17900, ['S', 'M', 'L'], 0, 3],
+      ['Corpiño push up', 'Corpiños', 9800, 22900, ['85', '90', '95', '100'], 0, 3], ['Corpiño sin aro algodón', 'Corpiños', 7600, 17900, ['S', 'M', 'L'], 0, 3],
       ['Bralette de encaje Luna', 'Corpiños', 8200, 19400, ['S', 'M', 'L'], 1, 3], ['Bombacha tiro alto', 'Bombachas', 3200, 7900, ['S', 'M', 'L', 'XL'], 0, 6],
       ['Culotte microfibra', 'Bombachas', 2800, 6900, ['S', 'M', 'L', 'XL'], 0, 6], ['Tanga de encaje', 'Bombachas', 2600, 6400, ['S', 'M', 'L'], 1, 5],
       ['Conjunto encaje bordó', 'Conjuntos', 16800, 38900, ['85 / M', '90 / M', '90 / L'], 1, 2], ['Conjunto algodón Nube', 'Conjuntos', 12400, 28900, ['S', 'M', 'L'], 0, 3],
